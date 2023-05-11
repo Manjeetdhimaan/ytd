@@ -1,0 +1,63 @@
+<title> <%= title %></title>
+
+<section class="section">
+    <!-- <div>
+        <% if (message) { %>
+            <div class="popup-form" id="myForm">
+              <div class="popup-content">
+                <div class="close-button" onclick="closeForm()">&times;</div>
+                <h2> <%= message %></h2>
+              </div>
+            </div>
+        <% } %>
+    </div> -->
+    <div class="container">
+     <h1 class="title has-text-centered">YouTube Video Downloader</h1>
+     <div class="columns">
+      <div class="column">
+       <form action="/convert-video" method="POST">
+        <div class="field has-addons">
+         <div class="control is-expanded">
+          <input class="input" type="text" placeholder="Enter YouTube video link" name="url" required>
+         </div>
+         <div class="control">
+            <button class="button is-primary" type="submit">
+                <span class="icon">
+                  <i class="fas fa-file-video"></i>
+                </span>
+                <span>Convert to Video</span>
+            </button>
+         </div>
+        </div>
+       </form>
+       <br>
+       <% if (video) { %>
+        <h3 class="subtitle has-text-centered">Available formats:</h3>
+        <ul style="text-align: center;">
+          <% 
+            let sortedFormats = video.formats.sort((a, b) => b.qualityLabel - a.qualityLabel);
+            let uniqueFormats = [];
+        
+            sortedFormats.forEach(function(format) {
+              if (format.qualityLabel && !uniqueFormats.includes(format.qualityLabel) && format.container) {
+                uniqueFormats.push(format.qualityLabel);
+          %>
+            <li>
+              <a href="/download-video?format=<%= format.itag %>&url=<%= video.url %>" class="button is-primary is-small">
+                <span class="icon">
+                  <i class="fas fa-download"></i>
+                </span>
+                <span><%= format.qualityLabel %>, <span style="color: black;"><%= video.title ? video.title.substring(0, 20) : '' %>,</span> <%= format.container %></span>
+              </a>
+            </li>
+            <br>
+          <% 
+            }
+          });
+          %>
+        </ul>
+      <% } %>
+      </div>
+     </div>
+    </div>
+</section>
