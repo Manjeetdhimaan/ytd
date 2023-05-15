@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended:true}));
 // data base
 const ConnectDB = async () => {
     try{
-        const conn = await mongoose.connect(process.env.MONGO_URL || 'mongodb+srv://manjeetuser:manjeet@employee-database.dxtzx.mongodb.net/balance-dyte?retryWrites=true&w=majority');
+        const conn = await mongoose.connect(process.env.MONGO_URL || 'mongodb+srv://manjeetuser:manjeet@employee-database.dxtzx.mongodb.net/ytb?retryWrites=true&w=majority');
         console.log(`MongoDB connected  successfull : ${conn.connection.host}`);
     }catch(err){
         console.log(`Error In Connecting MongoDB: ${err}`);
@@ -24,7 +24,7 @@ app.use(expressLayouts);
 app.set('view engine' , 'ejs');
 app.set('views' , 'project_views');
 
-app.get('/ads.txt' ,(req,res) => {
+app.get('/ads.txt' ,(req, res) => {
     const filepath = __dirname + '/ads.txt';
     fs.readFile(filepath,'utf8',(err,data) =>{
         if(err){
@@ -35,7 +35,7 @@ app.get('/ads.txt' ,(req,res) => {
         }
     });
 });
-app.use('/',require('./routers'));
+app.use('/', require('./routers'));
 
 ConnectDB().then(() => {
     app.listen(port,() => {

@@ -22,27 +22,27 @@
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item" href="/">
+        <a class="<%= path === '/' ? 'navbar-item active' : 'navbar-item' %>" href="/">
           Home
         </a>
 
-        <a class="navbar-item" href="/audio-convertor">
+        <a class="<%= path === '/audio-convertor' ? 'navbar-item active' : 'navbar-item' %>" href="/audio-convertor">
           Audio Converter
         </a>
   
-        <a class="navbar-item" href="/about-us">
+        <a class="<%= path === '/about-us' ? 'navbar-item active' : 'navbar-item' %>" href="/about-us">
           About Us
         </a>
   
-        <a class="navbar-item" href="/contact-us">
+        <a class="<%= path === '/contact-us' ? 'navbar-item active' : 'navbar-item' %>" href="/contact-us">
           Contact Us
         </a>
   
-        <a class="navbar-item" href="/privacy">
+        <a class="<%= path === '/privacy' ? 'navbar-item active' : 'navbar-item' %>" href="/privacy">
           Privacy Policy
         </a>
   
-        <a class="navbar-item" href="/terms">
+        <a class="<%= path === '/terms' ? 'navbar-item active' : 'navbar-item' %>" href="/terms">
           Terms & Conditions
         </a>
       </div>
